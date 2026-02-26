@@ -1,4 +1,3 @@
-# 📱 Chatty BWA Flutter
 ## 🛠 Teknologi yang Digunakan
 - Flutter
 - Dart
