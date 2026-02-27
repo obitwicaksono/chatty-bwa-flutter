@@ -24,24 +24,16 @@ class ChatTile extends StatelessWidget {
         padding: EdgeInsets.only(top: 16),
         child: Row(
           children: [
-            Image.asset(
-              imageUrl,
-              width: 55,
-              height: 55,
-            ),
+            Image.asset(imageUrl, width: 55, height: 55),
             SizedBox(width: 12),
             Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(name, style: titleTextStyle),
                 Text(
                   text,
                   style: unread
-                      ? subtitleTextStyle
-                            .copyWith(
-                              color: blackColor,
-                            )
+                      ? subtitleTextStyle.copyWith(color: blackColor)
                       : subtitleTextStyle,
                 ),
               ],

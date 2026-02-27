@@ -1,6 +1,6 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
-// import 'package:chatty_bwa/widgets/chat_tile.dart';
+import 'package:chatty_bwa/widgets/chat_bubble.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,17 +22,10 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(width: 12),
                   Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Jakarta Fair',
-                        style: titleTextStyle,
-                      ),
-                      Text(
-                        '14,209 members',
-                        style: subtitleTextStyle,
-                      ),
+                      Text('Jakarta Fair', style: titleTextStyle),
+                      Text('14,209 members', style: subtitleTextStyle),
                     ],
                   ),
                   Spacer(),
@@ -52,7 +45,25 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 60),
+              Container(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 30),
+                  child: Column(
+                    children: [
+                      ChatBubble(
+                        userImage: 'assets/images/friend1.png',
+                        text: 'How are ya guys?',
+                        time: '2:30',
+                      ),
+                      ChatBubble(
+                        userImage: 'assets/images/friend1.png',
+                        text: 'How are ya guys?',
+                        time: '2:30',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

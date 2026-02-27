@@ -5,6 +5,8 @@ Color whiteColor = Color(0xffFFFFFF);
 Color lightBlueColor = Color(0xff9ED0FF);
 Color blackColor = Color(0xff2C3A59);
 Color greyColor = Color(0xff808BA2);
+Color whiteGreyColor = Color(0xffEBEFF3);
+Color blackGrey = Color(0xff505C6B);
 Color greenColor = Color(0xff29CB9E);
 
 TextStyle titleTextStyle = TextStyle(
