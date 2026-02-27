@@ -30,7 +30,7 @@ chatty-bwa-flutter/
 ├── web/
 ├── lib/
 │   ├── main.dart
-|   ├── widgets/
+|   ├── pages/
 │   ├── widgets/
 ├── assets/
 ├── test/
