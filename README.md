@@ -1,27 +1,30 @@
-## 🛠 Teknologi yang Digunakan
-- Flutter
-- Dart
+## 🛠 Technologies Used
 
-## 📦 Instalasi
-1. Clone repository:
+* Flutter
+* Dart
+
+## 📦 Installation
+
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/obitwicaksono/chatty-bwa-flutter.git
 ```
 
-2. Masuk ke folder project:
+2. Navigate to the project directory:
 
 ```bash
 cd chatty-bwa-flutter
 ```
 
-3. Install dependencies:
+3. Install the dependencies:
 
 ```bash
 flutter pub get
 ```
 
-## 📁 Struktur Folder
+## 📁 Folder Structure
+
 ```
 chatty-bwa-flutter/
 │
@@ -30,7 +33,7 @@ chatty-bwa-flutter/
 ├── web/
 ├── lib/
 │   ├── main.dart
-|   ├── pages/
+│   ├── pages/
 │   ├── widgets/
 ├── assets/
 ├── test/
