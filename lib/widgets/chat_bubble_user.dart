@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/theme.dart';
 
-class ChatBubble extends StatelessWidget {
+class ChatBubbleUser extends StatelessWidget {
   final String userImage;
   final String text;
   final String time;
 
-  const ChatBubble({
+  const ChatBubbleUser({
     super.key,
     required this.userImage,
     required this.text,
@@ -18,10 +18,9 @@ class ChatBubble extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 30),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Image.asset(userImage, height: 40, width: 40),
-          SizedBox(width: 12),
           Container(
             constraints: BoxConstraints(minHeight: 72, maxWidth: 280),
             decoration: BoxDecoration(
@@ -29,8 +28,8 @@ class ChatBubble extends StatelessWidget {
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(22.0),
                 topRight: Radius.circular(22.0),
-                bottomRight: Radius.circular(22.0),
-                bottomLeft: Radius.circular(0.0),
+                bottomRight: Radius.circular(0.0),
+                bottomLeft: Radius.circular(22.0),
               ),
             ),
             child: Padding(
@@ -43,6 +42,7 @@ class ChatBubble extends StatelessWidget {
                 children: [
                   Text(
                     text,
+                    textAlign: TextAlign.end,
                     style: TextStyle(
                       fontSize: 16,
                       color: blackGrey,
@@ -62,6 +62,8 @@ class ChatBubble extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 12),
+          Image.asset(userImage, height: 40, width: 40),
         ],
       ),
     );

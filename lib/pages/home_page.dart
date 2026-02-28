@@ -1,6 +1,7 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/widgets/chat_bubble.dart';
+import 'package:chatty_bwa/widgets/chat_bubble_user.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -56,9 +57,20 @@ class HomePage extends StatelessWidget {
                         time: '2:30',
                       ),
                       ChatBubble(
-                        userImage: 'assets/images/friend1.png',
-                        text: 'How are ya guys?',
-                        time: '2:30',
+                        userImage: 'assets/images/friend3.png',
+                        text: 'Find here :P',
+                        time: '3:11',
+                      ),
+                      ChatBubbleUser(
+                        userImage: 'assets/images/friend0.png',
+                        text:
+                            'Thinking about how to deal with this client from hell...',
+                        time: '22:08',
+                      ),
+                      ChatBubble(
+                        userImage: 'assets/images/friend2.png',
+                        text: 'Love them',
+                        time: '23:11',
                       ),
                     ],
                   ),
