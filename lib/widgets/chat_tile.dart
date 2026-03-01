@@ -7,6 +7,7 @@ class ChatTile extends StatelessWidget {
   final String text;
   final String time;
   final bool unread;
+  final GestureTapCallback? onTap;
 
   const ChatTile({
     super.key,
@@ -15,6 +16,7 @@ class ChatTile extends StatelessWidget {
     required this.text,
     required this.time,
     required this.unread,
+    required this.onTap,
   });
 
   @override

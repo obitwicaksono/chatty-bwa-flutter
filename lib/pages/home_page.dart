@@ -1,7 +1,6 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:chatty_bwa/widgets/chat_bubble.dart';
-import 'package:chatty_bwa/widgets/chat_bubble_user.dart';
+import 'package:chatty_bwa/widgets/chat_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,74 +8,110 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: greenColor,
+        child: Icon(Icons.add, size: 28, color: whiteColor),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      backgroundColor: blueColor,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/images/group1.png',
-                    width: 55,
-                    height: 55,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 40),
+                Image.asset(
+                  'assets/images/profile_pic.png',
+                  height: 100,
+                  width: 100,
+                ),
+                SizedBox(height: 20),
+                Text(
+                  'Sabrina Carpenter',
+                  style: TextStyle(fontSize: 20, color: whiteColor),
+                ),
+                Text(
+                  'Travel Freelancer',
+                  style: TextStyle(color: lightBlueColor, fontSize: 16),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  padding: EdgeInsets.all(30),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: whiteColor,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(40),
+                    ),
                   ),
-                  SizedBox(width: 12),
-                  Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Jakarta Fair', style: titleTextStyle),
-                      Text('14,209 members', style: subtitleTextStyle),
-                    ],
-                  ),
-                  Spacer(),
-                  Ink(
-                    width: 35,
-                    height: 35,
-                    decoration: ShapeDecoration(
-                      color: greenColor,
-                      shape: CircleBorder(),
-                    ),
-                    child: IconButton(
-                      icon: Icon(Icons.call),
-                      iconSize: 18,
-                      color: whiteColor,
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30),
-                  child: Column(
-                    children: [
-                      ChatBubble(
-                        userImage: 'assets/images/friend1.png',
-                        text: 'How are ya guys?',
+                      Text('Friends', style: titleTextStyle),
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/friend1.png',
+                        name: 'Joshuer',
+                        text: 'Sorry, you’re not my ty...',
+                        time: 'Now',
+                        unread: true,
+                      ),
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/friend2.png',
+                        name: 'Gabriela',
+                        text: 'I saw it clearly and mig...',
                         time: '2:30',
+                        unread: false,
                       ),
-                      ChatBubble(
-                        userImage: 'assets/images/friend3.png',
-                        text: 'Find here :P',
-                        time: '3:11',
+                      SizedBox(height: 30),
+                      Text('Groups', style: titleTextStyle),
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/group1.png',
+                        name: 'Jakarta Fair',
+                        text: 'Why does everyone ca...',
+                        time: '11:11',
+                        unread: false,
                       ),
-                      ChatBubbleUser(
-                        userImage: 'assets/images/friend0.png',
-                        text:
-                            'Thinking about how to deal with this client from hell...',
-                        time: '22:08',
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/group2.png',
+                        name: 'Angga',
+                        text: 'Here here we can go...',
+                        time: '7:11',
+                        unread: true,
                       ),
-                      ChatBubble(
-                        userImage: 'assets/images/friend2.png',
-                        text: 'Love them',
-                        time: '23:11',
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/group3.png',
+                        name: 'Bentley',
+                        text: 'The car which does not...',
+                        time: '7:11',
+                        unread: true,
+                      ),
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/group1.png',
+                        name: 'John F',
+                        text: 'The car which does not...',
+                        time: '7:11',
+                        unread: true,
+                      ),
+                      ChatTile(
+                        onTap: () {},
+                        imageUrl: 'assets/images/group2.png',
+                        name: 'Aura',
+                        text: 'The car which does not...',
+                        time: '7:11',
+                        unread: true,
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
