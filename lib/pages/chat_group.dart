@@ -1,7 +1,7 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/widgets/chat_bubble.dart';
-import 'package:chatty_bwa/widgets/chat_bubble_user.dart';
+import 'package:chatty_bwa/widgets/chat_bubble_for_user.dart';
 
 class ChatGroup extends StatelessWidget {
   const ChatGroup({super.key});
