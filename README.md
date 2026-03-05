@@ -1,4 +1,4 @@
-## Chatty BWA (flutter mobile deveopment)
+## Chatty BWA (flutter mobile)
 
 ## 🛠 Technologies Used
 
