@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:chatty_bwa/theme.dart';
 
 class ChatTile extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String text;
-  final String time;
-  final bool unread;
-  final GestureTapCallback? onTap;
-
   const ChatTile({
     super.key,
     required this.imageUrl,
@@ -18,6 +11,13 @@ class ChatTile extends StatelessWidget {
     required this.unread,
     required this.onTap,
   });
+
+  final String imageUrl;
+  final String name;
+  final String text;
+  final String time;
+  final bool unread;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,9 @@ class ChatTile extends StatelessWidget {
                 Text(
                   text,
                   style: unread
-                      ? subtitleTextStyle.copyWith(color: blackColor)
+                      ? subtitleTextStyle.copyWith(
+                          color: blackColor,
+                        )
                       : subtitleTextStyle,
                 ),
               ],

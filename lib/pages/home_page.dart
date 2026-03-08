@@ -1,6 +1,7 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/widgets/chat_tile.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,7 +69,10 @@ class HomePage extends StatelessWidget {
                       SizedBox(height: 30),
                       Text('Groups', style: titleTextStyle),
                       ChatTile(
-                        onTap: () {},
+                        onTap: () {
+                          print('tap');
+                          GoRouter.of(context).go('/chatGroup');
+                        },
                         imageUrl: 'assets/images/group1.png',
                         name: 'Jakarta Fair',
                         text: 'Why does everyone ca...',
