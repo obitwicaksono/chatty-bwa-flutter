@@ -9,7 +9,6 @@ class ChatTile extends StatelessWidget {
     required this.text,
     required this.time,
     required this.unread,
-    required this.onTap,
   });
 
   final String imageUrl;
@@ -17,7 +16,6 @@ class ChatTile extends StatelessWidget {
   final String text;
   final String time;
   final bool unread;
-  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

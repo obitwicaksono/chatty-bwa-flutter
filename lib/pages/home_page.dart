@@ -1,10 +1,13 @@
 import 'package:chatty_bwa/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:chatty_bwa/widgets/chat_tile.dart';
-import 'package:go_router/go_router.dart';
+// import 'package:chatty_bwa/widgets/chat_tile.dart';
+import 'package:chatty_bwa/models/chat_list.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  List<ChatListModel> chatList =
+      ChatListModel.getChatList();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,8 @@ class HomePage extends StatelessWidget {
         backgroundColor: greenColor,
         child: Icon(Icons.add, size: 28, color: whiteColor),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerFloat,
       backgroundColor: blueColor,
       body: SafeArea(
         child: Center(
@@ -30,11 +34,17 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 20),
                 Text(
                   'Sabrina Carpenter',
-                  style: TextStyle(fontSize: 20, color: whiteColor),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: whiteColor,
+                  ),
                 ),
                 Text(
                   'Travel Freelancer',
-                  style: TextStyle(color: lightBlueColor, fontSize: 16),
+                  style: TextStyle(
+                    color: lightBlueColor,
+                    fontSize: 16,
+                  ),
                 ),
                 SizedBox(height: 30),
                 Container(
@@ -47,70 +57,115 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start,
                     children: [
-                      Text('Friends', style: titleTextStyle),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/friend1.png',
-                        name: 'Joshuer',
-                        text: 'Sorry, you’re not my ty...',
-                        time: 'Now',
-                        unread: true,
+                      Text(
+                        'Friends',
+                        style: titleTextStyle,
                       ),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/friend2.png',
-                        name: 'Gabriela',
-                        text: 'I saw it clearly and mig...',
-                        time: '2:30',
-                        unread: false,
+
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics:
+                            NeverScrollableScrollPhysics(),
+                        itemCount: chatList.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: 16,
+                              ),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    chatList[index]
+                                        .imageUrl,
+                                    width: 55,
+                                    height: 55,
+                                  ),
+                                  SizedBox(width: 12),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment
+                                            .start,
+                                    children: [
+                                      Text(
+                                        chatList[index]
+                                            .name,
+                                        style:
+                                            titleTextStyle,
+                                      ),
+                                      Text(
+                                        chatList[index]
+                                            .text,
+                                        style:
+                                            chatList[index]
+                                                .unread
+                                            ? subtitleTextStyle
+                                                  .copyWith(
+                                                    color:
+                                                        blackColor,
+                                                  )
+                                            : subtitleTextStyle,
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    chatList[index].time,
+                                    style:
+                                        subtitleTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       ),
+
                       SizedBox(height: 30),
                       Text('Groups', style: titleTextStyle),
-                      ChatTile(
-                        onTap: () {
-                          print('tap');
-                          GoRouter.of(context).go('/chatGroup');
-                        },
-                        imageUrl: 'assets/images/group1.png',
-                        name: 'Jakarta Fair',
-                        text: 'Why does everyone ca...',
-                        time: '11:11',
-                        unread: false,
-                      ),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/group2.png',
-                        name: 'Angga',
-                        text: 'Here here we can go...',
-                        time: '7:11',
-                        unread: true,
-                      ),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/group3.png',
-                        name: 'Bentley',
-                        text: 'The car which does not...',
-                        time: '7:11',
-                        unread: true,
-                      ),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/group1.png',
-                        name: 'John F',
-                        text: 'The car which does not...',
-                        time: '7:11',
-                        unread: true,
-                      ),
-                      ChatTile(
-                        onTap: () {},
-                        imageUrl: 'assets/images/group2.png',
-                        name: 'Aura',
-                        text: 'The car which does not...',
-                        time: '7:11',
-                        unread: true,
-                      ),
+                      // ChatTile(
+                      //   imageUrl:
+                      //       'assets/images/group1.png',
+                      //   name: 'Jakarta Fair',
+                      //   text: 'Why does everyone ca...',
+                      //   time: '11:11',
+                      //   unread: false,
+                      // ),
+                      // ChatTile(
+                      //   imageUrl:
+                      //       'assets/images/group2.png',
+                      //   name: 'Angga',
+                      //   text: 'Here here we can go...',
+                      //   time: '7:11',
+                      //   unread: true,
+                      // ),
+                      // ChatTile(
+                      //   imageUrl:
+                      //       'assets/images/group3.png',
+                      //   name: 'Bentley',
+                      //   text: 'The car which does not...',
+                      //   time: '7:11',
+                      //   unread: true,
+                      // ),
+                      // ChatTile(
+                      //   imageUrl:
+                      //       'assets/images/group1.png',
+                      //   name: 'John F',
+                      //   text: 'The car which does not...',
+                      //   time: '7:11',
+                      //   unread: true,
+                      // ),
+                      // ChatTile(
+                      //   imageUrl:
+                      //       'assets/images/group2.png',
+                      //   name: 'Aura',
+                      //   text: 'The car which does not...',
+                      //   time: '7:11',
+                      //   unread: true,
+                      // ),
                     ],
                   ),
                 ),

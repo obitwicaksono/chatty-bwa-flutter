@@ -22,8 +22,14 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => HomePage()),
-      GoRoute(path: '/chatGroup', builder: (context, state) => ChatGroup()),
+      GoRoute(
+        path: '/',
+        builder: (context, state) => HomePage(),
+      ),
+      GoRoute(
+        path: '/chatGroup',
+        builder: (context, state) => ChatGroup(),
+      ),
     ],
   );
 }
