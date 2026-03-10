@@ -1,3 +1,4 @@
+import 'package:chatty_bwa/models/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/theme.dart';
 
@@ -9,6 +10,7 @@ class ChatTile extends StatelessWidget {
     required this.text,
     required this.time,
     required this.unread,
+    required this.chatType,
   });
 
   final String imageUrl;
@@ -16,6 +18,7 @@ class ChatTile extends StatelessWidget {
   final String text;
   final String time;
   final bool unread;
+  final ChatType chatType;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +36,7 @@ class ChatTile extends StatelessWidget {
                 Text(
                   text,
                   style: unread
-                      ? subtitleTextStyle.copyWith(
-                          color: blackColor,
-                        )
+                      ? subtitleTextStyle.copyWith(color: blackColor)
                       : subtitleTextStyle,
                 ),
               ],

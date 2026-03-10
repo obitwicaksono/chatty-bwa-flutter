@@ -1,13 +1,16 @@
 import 'package:chatty_bwa/theme.dart';
+import 'package:chatty_bwa/widgets/chat_tile.dart';
 import 'package:flutter/material.dart';
-// import 'package:chatty_bwa/widgets/chat_tile.dart';
 import 'package:chatty_bwa/models/chat_list.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  List<ChatListModel> chatList =
-      ChatListModel.getChatList();
+  List<ChatListModel> chatList = ChatListModel.getChatList();
+  List<ChatListModel> get friends =>
+      chatList.where((chat) => chat.chatType == ChatType.friend).toList();
+  List<ChatListModel> get groups =>
+      chatList.where((chat) => chat.chatType == ChatType.group).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +20,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: greenColor,
         child: Icon(Icons.add, size: 28, color: whiteColor),
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: blueColor,
       body: SafeArea(
         child: Center(
@@ -34,17 +36,11 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 20),
                 Text(
                   'Sabrina Carpenter',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: whiteColor,
-                  ),
+                  style: TextStyle(fontSize: 20, color: whiteColor),
                 ),
                 Text(
                   'Travel Freelancer',
-                  style: TextStyle(
-                    color: lightBlueColor,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(color: lightBlueColor, fontSize: 16),
                 ),
                 SizedBox(height: 30),
                 Container(
@@ -57,115 +53,42 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Friends',
-                        style: titleTextStyle,
-                      ),
+                      Text('Friends', style: titleTextStyle),
 
                       ListView.builder(
                         shrinkWrap: true,
-                        physics:
-                            NeverScrollableScrollPhysics(),
-                        itemCount: chatList.length,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: friends.length,
                         itemBuilder: (context, index) {
-                          return Container(
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                top: 16,
-                              ),
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    chatList[index]
-                                        .imageUrl,
-                                    width: 55,
-                                    height: 55,
-                                  ),
-                                  SizedBox(width: 12),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment
-                                            .start,
-                                    children: [
-                                      Text(
-                                        chatList[index]
-                                            .name,
-                                        style:
-                                            titleTextStyle,
-                                      ),
-                                      Text(
-                                        chatList[index]
-                                            .text,
-                                        style:
-                                            chatList[index]
-                                                .unread
-                                            ? subtitleTextStyle
-                                                  .copyWith(
-                                                    color:
-                                                        blackColor,
-                                                  )
-                                            : subtitleTextStyle,
-                                      ),
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    chatList[index].time,
-                                    style:
-                                        subtitleTextStyle,
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return ChatTile(
+                            imageUrl: friends[index].imageUrl,
+                            name: friends[index].name,
+                            text: friends[index].text,
+                            time: friends[index].time,
+                            unread: friends[index].unread,
+                            chatType: friends[index].chatType,
                           );
                         },
                       ),
-
                       SizedBox(height: 30),
                       Text('Groups', style: titleTextStyle),
-                      // ChatTile(
-                      //   imageUrl:
-                      //       'assets/images/group1.png',
-                      //   name: 'Jakarta Fair',
-                      //   text: 'Why does everyone ca...',
-                      //   time: '11:11',
-                      //   unread: false,
-                      // ),
-                      // ChatTile(
-                      //   imageUrl:
-                      //       'assets/images/group2.png',
-                      //   name: 'Angga',
-                      //   text: 'Here here we can go...',
-                      //   time: '7:11',
-                      //   unread: true,
-                      // ),
-                      // ChatTile(
-                      //   imageUrl:
-                      //       'assets/images/group3.png',
-                      //   name: 'Bentley',
-                      //   text: 'The car which does not...',
-                      //   time: '7:11',
-                      //   unread: true,
-                      // ),
-                      // ChatTile(
-                      //   imageUrl:
-                      //       'assets/images/group1.png',
-                      //   name: 'John F',
-                      //   text: 'The car which does not...',
-                      //   time: '7:11',
-                      //   unread: true,
-                      // ),
-                      // ChatTile(
-                      //   imageUrl:
-                      //       'assets/images/group2.png',
-                      //   name: 'Aura',
-                      //   text: 'The car which does not...',
-                      //   time: '7:11',
-                      //   unread: true,
-                      // ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: groups.length,
+                        itemBuilder: (context, index) {
+                          return ChatTile(
+                            imageUrl: groups[index].imageUrl,
+                            name: groups[index].name,
+                            text: groups[index].text,
+                            time: groups[index].time,
+                            unread: groups[index].unread,
+                            chatType: groups[index].chatType,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),

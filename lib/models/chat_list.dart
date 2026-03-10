@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+enum ChatType { friend, group }
 
 class ChatListModel {
-  late String imageUrl;
-  late String name;
-  late String text;
-  late String time;
-  late bool unread;
+  final String imageUrl;
+  final String name;
+  final String text;
+  final String time;
+  final bool unread;
+  final ChatType chatType;
 
   ChatListModel({
     required this.imageUrl,
@@ -13,6 +14,7 @@ class ChatListModel {
     required this.text,
     required this.time,
     required this.unread,
+    required this.chatType,
   });
 
   static List<ChatListModel> getChatList() {
@@ -25,6 +27,7 @@ class ChatListModel {
         text: 'Sorry, you’re not my ty...',
         time: 'Now',
         unread: true,
+        chatType: ChatType.friend,
       ),
     );
 
@@ -35,6 +38,7 @@ class ChatListModel {
         text: 'I saw it clearly and mig...',
         time: '2:30',
         unread: false,
+        chatType: ChatType.friend,
       ),
     );
 
@@ -45,6 +49,7 @@ class ChatListModel {
         text: 'Why does everyone ca...',
         time: '11:11',
         unread: false,
+        chatType: ChatType.group,
       ),
     );
 
@@ -55,6 +60,7 @@ class ChatListModel {
         text: 'The car which does not...',
         time: '7:11',
         unread: true,
+        chatType: ChatType.group,
       ),
     );
 
@@ -65,6 +71,7 @@ class ChatListModel {
         text: 'The car which does not...',
         time: '7:11',
         unread: true,
+        chatType: ChatType.group,
       ),
     );
 
@@ -75,6 +82,7 @@ class ChatListModel {
         text: 'The car which does not...',
         time: '7:11',
         unread: true,
+        chatType: ChatType.group,
       ),
     );
     return chatList;
