@@ -2,6 +2,7 @@ import 'package:chatty_bwa/theme.dart';
 import 'package:chatty_bwa/widgets/chat_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:chatty_bwa/models/chat_list.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -62,13 +63,13 @@ class HomePage extends StatelessWidget {
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: friends.length,
                         itemBuilder: (context, index) {
-                          return ChatTile(
-                            imageUrl: friends[index].imageUrl,
-                            name: friends[index].name,
-                            text: friends[index].text,
-                            time: friends[index].time,
-                            unread: friends[index].unread,
-                            chatType: friends[index].chatType,
+                          return GestureDetector(
+                            child: ChatTile(
+                              chat: friends[index],
+                              onTap: () {
+                                GoRouter.of(context).go('/chatGroup');
+                              },
+                            ),
                           );
                         },
                       ),
@@ -80,12 +81,10 @@ class HomePage extends StatelessWidget {
                         itemCount: groups.length,
                         itemBuilder: (context, index) {
                           return ChatTile(
-                            imageUrl: groups[index].imageUrl,
-                            name: groups[index].name,
-                            text: groups[index].text,
-                            time: groups[index].time,
-                            unread: groups[index].unread,
-                            chatType: groups[index].chatType,
+                            chat: groups[index],
+                            onTap: () {
+                              GoRouter.of(context).go('/chatGroup');
+                            },
                           );
                         },
                       ),
