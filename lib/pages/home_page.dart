@@ -44,51 +44,52 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(color: lightBlueColor, fontSize: 16),
                 ),
                 SizedBox(height: 30),
-                Container(
-                  padding: EdgeInsets.all(30),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: whiteColor,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(40),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Friends', style: titleTextStyle),
+                Material(
+                  // color: whiteColor,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+                  // clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    padding: EdgeInsets.all(30),
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Friends', style: titleTextStyle),
 
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: friends.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            child: ChatTile(
-                              chat: friends[index],
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: friends.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              child: ChatTile(
+                                chat: friends[index],
+                                onTap: () {
+                                  // GoRouter.of(context).go('/chatGroup');
+                                  print('asd');
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 30),
+                        Text('Groups', style: titleTextStyle),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: groups.length,
+                          itemBuilder: (context, index) {
+                            return ChatTile(
+                              chat: groups[index],
                               onTap: () {
-                                GoRouter.of(context).go('/chatGroup');
+                                // GoRouter.of(context).go('/chatGroup');
+                                print('asd');
                               },
-                            ),
-                          );
-                        },
-                      ),
-                      SizedBox(height: 30),
-                      Text('Groups', style: titleTextStyle),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: groups.length,
-                        itemBuilder: (context, index) {
-                          return ChatTile(
-                            chat: groups[index],
-                            onTap: () {
-                              GoRouter.of(context).go('/chatGroup');
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
