@@ -7,6 +7,7 @@ class ChatListModel {
   final String time;
   final bool unread;
   final ChatType chatType;
+  final String id;
 
   ChatListModel({
     required this.imageUrl,
@@ -15,6 +16,7 @@ class ChatListModel {
     required this.time,
     required this.unread,
     required this.chatType,
+    required this.id,
   });
 
   static List<ChatListModel> getChatList() {
@@ -28,6 +30,7 @@ class ChatListModel {
         time: 'Now',
         unread: true,
         chatType: ChatType.friend,
+        id: 'chat1',
       ),
     );
 
@@ -39,6 +42,7 @@ class ChatListModel {
         time: '2:30',
         unread: false,
         chatType: ChatType.friend,
+        id: 'chat2',
       ),
     );
 
@@ -50,6 +54,7 @@ class ChatListModel {
         time: '11:11',
         unread: false,
         chatType: ChatType.group,
+        id: 'group1',
       ),
     );
 
@@ -61,6 +66,7 @@ class ChatListModel {
         time: '7:11',
         unread: true,
         chatType: ChatType.group,
+        id: 'group2',
       ),
     );
 
@@ -72,6 +78,7 @@ class ChatListModel {
         time: '7:11',
         unread: true,
         chatType: ChatType.group,
+        id: 'group3',
       ),
     );
 
@@ -83,6 +90,7 @@ class ChatListModel {
         time: '7:11',
         unread: true,
         chatType: ChatType.group,
+        id: 'group4',
       ),
     );
     return chatList;

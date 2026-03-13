@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'pages/home_page.dart';
-import 'pages/chat_group.dart';
+import 'pages/chat_page.dart';
+import 'models/chat_list.dart';
+import 'pages/chat_group1.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,13 +24,17 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     routes: [
+      GoRoute(path: '/', builder: (context, state) => HomePage()),
       GoRoute(
-        path: '/',
-        builder: (context, state) => HomePage(),
-      ),
-      GoRoute(
-        path: '/chatGroup',
-        builder: (context, state) => ChatGroup(),
+        path: '/chat/:chatId',
+        builder: (context, state) {
+          final chatId = state.pathParameters['chatId']!;
+          if (chatId == 'group1') {
+            return Group1();
+          } else {
+            return Chat(chatId: chatId);
+          }
+        },
       ),
     ],
   );

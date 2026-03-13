@@ -65,8 +65,7 @@ class HomePage extends StatelessWidget {
                               child: ChatTile(
                                 chat: friends[index],
                                 onTap: () {
-                                  // GoRouter.of(context).go('/chatGroup');
-                                  print('asd');
+                                  context.go('/chat/${friends[index].id}');
                                 },
                               ),
                             );
@@ -82,8 +81,7 @@ class HomePage extends StatelessWidget {
                             return ChatTile(
                               chat: groups[index],
                               onTap: () {
-                                // GoRouter.of(context).go('/chatGroup');
-                                print('asd');
+                                context.go('/chat/${groups[index].id}');
                               },
                             );
                           },
